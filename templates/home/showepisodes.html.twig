@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <tr>
+            <th>Seizoen</th>
+            <th>Aflevering</th>
+            <th>Titel</th>
+        </tr>
+        <h1>{{ series.title }}</h1>
+
+        {% for episode in series.episode %}
+
+
+            <tr>
+                <td>{{ episode.season }}</td>
+                <td>{{ episode.part }}</td>
+                <td>{{ episode.name }}</td>
+
+
+
+            </tr>
+
+        {% endfor %}
+    </table>
+    <a href="{{ path('showseriesbygenre', {'id': series.genre.id}) }}">terug</a>
+{% endblock %}

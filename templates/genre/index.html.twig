@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Genre index{% endblock %}
+
+{% block body %}
+
+    <h1>Genres</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nummer</th>
+                <th>Naam</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for genre in genres %}
+            <tr>
+                <td>{{ genre.id }}</td>
+                <td>{{ genre.name }}</td>
+                <td>
+                    <button class="btn btn-warning"><a href="{{ path('showseriesbygenre', {'id': genre.id}) }}"><h5>Go</h5></a></button>
+                    <button class="btn btn-warning"><a href="{{ path('app_genre_edit', {'id': genre.id}) }}"><h5>Edit</h5></a></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <button class="btn btn-warning"><a href="{{ path('app_genre_new') }}"><h5>Toevoegen</h5></a></button>
+{% endblock %}

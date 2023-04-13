@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+    <tr>
+        <th>Title</th>
+        <th>description</th>
+        <th>Jaar</th>
+        <th>Afleveringen</th>
+    </tr>
+        <h1>{{ genre.name }}</h1>
+
+    {% for serie in genre.serie %}
+
+
+            <tr>
+                <td>{{ serie.title }}</td>
+                <td>{{ serie.description }}</td>
+                <th>{{ serie.year }}</th>
+                <th><button class="btn btn-warning"><a href="{{ path('showepisodesbyserie', {'id': serie.id}) }}"><h5>Go</h5></a></button></th>
+
+
+            </tr>
+
+    {% endfor %}
+    </table>
+    <a href="{{ path('app_genre_index') }}">Terug</a>
+{% endblock %}
